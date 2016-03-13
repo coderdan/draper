@@ -1,5 +1,7 @@
 require 'rake/testtask'
 
+=begin
+TEMPHACK!
 test_task = if Rails.version.to_f < 3.2
   require 'rails/test_unit/railtie'
   Rake::TestTask
@@ -20,3 +22,4 @@ if Rails.version.to_f < 4.2 && Rake::Task.task_defined?('test:run')
     Rake::Task['test:decorators'].invoke
   end
 end
+=end
