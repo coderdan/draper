@@ -4,6 +4,7 @@ module Draper
     module BuildStrategy
 
       def self.new(name, &block)
+        puts "BBBBBBB"
         const_get(name.to_s.camelize).new(&block)
       end
 
@@ -38,7 +39,7 @@ module Draper
 
         def controller
           (Draper::ViewContext.controller || ApplicationController.new).tap do |controller|
-            controller.request ||= ActionController::TestRequest.new if defined?(ActionController::TestRequest)
+            controller.request ||= ActionController::TestRequest.new({}, ActionController::TestRequest.new_session) if defined?(ActionController::TestRequest)
           end
         end
       end
